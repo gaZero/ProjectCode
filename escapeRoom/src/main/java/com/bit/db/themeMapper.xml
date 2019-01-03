@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="theme">
+  <select id="selectTheme" resultType="themeVo">
+    select * from theme
+  </select>
+  <select id="selTheme_loc" resultType="themeVo">
+  	select * from theme t, (select loc1,loc2,id from escaperoom where loc1=#{loc1} and loc2=#{loc2}) e where t.id=e.id and t.ername=#{ername}
+  </select>
+  <select id="selTheme_tcode" resultType="themeVo">
+  	select * from theme t, (select loc1,loc2,id from escaperoom) e where t.id=e.id and tcode=#{tcode}
+  </select>
+  <select id="selTheme_id" resultType="themeVo">
+  	select * from theme where id=#{id}
+  </select>
+  <insert id="insert"> 
+ 	insert into theme values(seq_tcode.nextval,#{ername},#{id},#{tname},#{genre},#{content},#{tstar},#{fname},#{playtime},#{people},#{price},#{retime})
+  </insert>
+  <select id="selectAll" resultType="themeVo">
+	select * from theme 
+	<if test="id != null and !id.equals('')">
+		where id=#{id}
+	</if>
+  </select>
+  <select id="selectOne" resultType="themeVo">
+  	select * from theme where tcode=#{tcode}
+  </select>
+  <select id="selectErname" resultType="themeVo">
+  	select ername, loc1, loc2 from escapeRoom where id=#{id}
+  </select>
+  <update id="update">
+  	update theme set tname=#{tname},genre=#{genre},content=#{content},tstar=#{tstar},fname=#{fname},playtime=#{playtime},people=#{people},price=#{price},retime=#{retime} where tcode=#{tcode}
+  </update>
+  <delete id="delete">
+  	delete theme where tcode=#{tcode}
+  </delete>
+</mapper>
