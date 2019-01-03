@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="esroom">
+  <select id="selectAll" resultType="esroomVo">
+	select * from escapeRoom
+	<if test="loc1 != null">
+		where loc1 = #{loc1}
+	</if>	
+	<if test ="loc2 != null">
+		and loc2 = #{loc2}
+	</if>
+	<if test="ername != null">
+		and ername = #{ername}
+	</if>
+  </select>
+
+
+</mapper>

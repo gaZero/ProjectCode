@@ -1,0 +1,45 @@
+
+@import url(http://fonts.gooleapis.com/earlyaccess/nanumgothic.css);
+*{
+	font-family: 'Nanum Gothic';
+}
+*{
+	color: #000000;
+	text-decoration: none;
+}
+*:haver{
+	color: #000000;
+	text-decoration: none;
+	cursor: :pointer;
+}
+
+.navbar-default{
+	background-color:#EAEAEA;
+	border-color:  #FFD9EC;
+}
+.navbar-defalut .navbar-brand{ 
+	color: #F6F6F6;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus{
+	background-color: transparent;
+	color: #980000;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus{
+	color: white;
+	background-color: #000000;
+}
+
+
+.navbar-default .navbar-nav > .li > a:hover,
+.navbar-default .navbar-nav > .li > a:focus{
+	color: white;
+	background-color: #000000;
+}
+
+
+
+
+

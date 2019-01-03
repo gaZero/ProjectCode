@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="reservation">
+  <select id="selTheme_res" resultType="theme_resVo">
+  	select * from theme_res
+  	<if test="bookdate != null and !bookdate.equals('')">
+  		where bookdate = #{bookdate}
+  	</if>
+  	<if test="tcode != null and !tcode.equals('')">
+  		and tcode = #{tcode}
+  	</if>
+  </select>
+  <select id="selMyRes" resultType="resVo">
+  	select ername, tname, resPeople, totalPrice, payType, resCode, bookdate, booktime, fname, r.star from reservation r, 
+	(select t.ername, tname, theme_rescode, bookdate, booktime, t.fname from theme t, theme_res tr where t.tcode = tr.tcode) theme
+	where r.theme_rescode = theme.theme_rescode and cid = #{cid} order by bookdate desc
+  </select>
+  <insert id="insertRes">
+  	insert into reservation values(#{resCode},#{resPeople},#{totalPrice},#{payType},#{theme_resCode},#{cid},null)
+  </insert>
+  <delete id="deleteRes">
+  	delete reservation where resCode=#{resCode}
+  </delete>
+  <update id="upTheme_res">
+  	update theme_res set resCode=#{resCode} where theme_resCode=#{theme_resCode}
+  </update>
+  <update id="upTheme_reset">
+  	update theme_res set resCode='0' where resCode=#{resCode}
+  </update>
+  <update id="updateStar">
+  	update reservation set star=#{star} where resCode=#{resCode}
+  </update>
+</mapper>

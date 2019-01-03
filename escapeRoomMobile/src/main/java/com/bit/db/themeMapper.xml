@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="theme">
+  <select id="selectAll" resultType="themeVo">
+	select * from theme 
+	<if test="id != null and !id.equals('')">
+		where id=#{id}
+	</if>
+	<if test="genre != null and !genre.equals('')">
+		where genre=#{genre}
+	</if>
+  </select>
+  <select id="selectOne" resultType="themeVo">
+  	select * from theme where tcode=#{tcode}
+  </select>
+  <select id="selTheme_tcode" resultType="themeVo">
+  	select * from theme where tcode=#{tcode}
+  </select>
+</mapper>

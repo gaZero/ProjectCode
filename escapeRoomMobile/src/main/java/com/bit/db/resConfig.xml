@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties resource="com/bit/db/escape.properties"/>
+	<typeAliases>
+		<typeAlias type="com.bit.vo.BoardVo" alias="bovo"/>
+		<typeAlias type="com.bit.vo.EsRoomVo" alias="esroomVo"/>
+		<typeAlias type="com.bit.vo.ThemeVo" alias="themeVo"/>
+		<typeAlias type="com.bit.vo.ResVo" alias="resVo"/>
+		<typeAlias type="com.bit.vo.Theme_ResVo" alias="theme_resVo"/>
+		<typeAlias type="com.bit.vo.CustomerVo" alias="customerVo" />
+	</typeAliases>
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+        <property name="driver" value="${driver}"/>
+        <property name="url" value="${url}"/>
+        <property name="username" value="${user}"/>
+        <property name="password" value="${pwd}"/>
+      </dataSource>
+    </environment>
+  </environments>
+  <mappers>
+    <mapper resource="com/bit/db/resMapper.xml"/>
+    <mapper resource="com/bit/db/themeMapper.xml"/>
+    <mapper resource="com/bit/db/customerMapper.xml"/>
+    <mapper resource="com/bit/db/erBoardMapper.xml"/>
+    <mapper resource="com/bit/db/esRoomMapper.xml"/>
+  </mappers>
+</configuration>
